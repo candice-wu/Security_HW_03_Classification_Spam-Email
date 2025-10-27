@@ -1,7 +1,7 @@
 # Spam Classifier Pro
 
 ## Streamlit Demo
-[Placeholder for Streamlit Cloud Deployment Link]
+https://hw03-classification-spam-email.streamlit.app
 
 ## Project Introduction (CRISP-DM Methodology)
 
@@ -90,4 +90,4 @@ The project is deployed as an interactive Streamlit web application with the fol
     ```
 
 ## Datasets Reference
-https://github.com/PacktPublishing/Hands-On-Artificial-Intelligence-for-Cybersecurity/blob/master/Chapter03/datasets/sms_spam_no_header.csv# Security_HW_03_Classification_Spam-Email
+https://github.com/PacktPublishing/Hands-On-Artificial-Intelligence-for-Cybersecurity/blob/master/Chapter03/datasets/sms_spam_no_header.csv
