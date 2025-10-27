@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# IDEs and editors
+.vscode/
+
+# Generated artifacts
+models/
