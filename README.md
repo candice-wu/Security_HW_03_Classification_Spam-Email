@@ -97,7 +97,7 @@ Streamlit Demo-site：https://hw03-classification-spam-email.streamlit.app
 ## 如何部署到 Streamlit Cloud
 
 1. Push 專案資料夾 to GitHub
-2. 至 https://share.streamlit.io，點擊 “Create app”
+2. 至 https://share.streamlit.io ，點擊 “Create app”
 3. Repository：下拉選擇 candice-wu/Security_HW_03_Classification_Spam-Email
 4. Branch：Main
 5. Main file path：5114050013_hw3.py

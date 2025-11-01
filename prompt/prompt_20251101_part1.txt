@@ -264,3 +264,12 @@ User： README.md 的 「## 如何執行專案」的第2點「python 5114050013_
 
 Gemini: ✦ I have updated the README.md file with the correct commands for running the training script and the Streamlit
   application.
+
+User： 請再幫忙將所有異動的檔案 push to remote github repository
+
+Gemini：✦ All changes have been pushed to the remote GitHub repository.
+
+User: README.md 第249列的 2. 至 https://share.streamlit.io，點擊 “Create app” 改成 2. 至 https://share.streamlit.io 
+  ，點擊 “Create app”
+
+✦ I have corrected the typo in README.md by adding a space before the comma in the Streamlit deployment instructions.
