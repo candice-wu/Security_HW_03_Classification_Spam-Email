@@ -4,8 +4,6 @@ pandas
 numpy
 matplotlib
 seaborn
-plotly
-nltk
 wordcloud
 joblib
 streamlit-option-menu

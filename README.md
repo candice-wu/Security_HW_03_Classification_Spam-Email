@@ -1,93 +1,123 @@
-# Spam Classifier Pro
+Streamlit Demo-site：https://hw03-classification-spam-email.streamlit.app
+[補充]
+1. 與 ChatGPT 對話記錄請參閱「人工智慧與資訊安全_HW03_與 chatGPT 對話記錄.pdf」
+2. 與 AI Agent (Gemini CLI and openspec) 對話記錄請參閱 prompt 資料夾裡的 7 份 .txt files.
 
-## Streamlit Demo
-https://hw03-classification-spam-email.streamlit.app
+# 垃圾郵件分類器 Pro
 
-## Project Introduction (CRISP-DM Methodology)
+## 專案結構
 
-This project implements an advanced spam classification system that not only classifies messages but also provides a comprehensive platform for comparing multiple machine learning models. It features a highly interactive Streamlit web application for real-time prediction, batch analysis, model performance evaluation, and exploratory data analysis (EDA).
+```
+.
+├── 5114050013_hw3.py         # 模型訓練腳本
+├── AGENTS.md                 # 關於 AI Agent 的說明
+├── HW03_吳佩玲_5114050013.pages # 作業文件 (Pages 格式)
+├── HW03_吳佩玲_5114050013.pdf  # 作業文件 (PDF 格式)
+├── README.md                 # 本檔案
+├── requirements.txt          # Python 函式庫依賴列表
+├── sms_spam_no_header.csv    # 原始資料集
+├── spam_classifier_model.pkl # 訓練好的垃圾郵件分類模型 (單一模型)
+├── streamlit_app.py          # Streamlit 應用程式主檔案
+├── test_spam_classifier.py   # 測試腳本
+├── tfidf_vectorizer.pkl      # TF-IDF 向量化工具
+├── vocab.json                # 詞彙表
+├── 人工智慧與資訊安全_HW03_與 chatGPT 對話記錄.pdf # 與 ChatGPT 對話記錄
+├── models/                   # 儲存多個訓練好的模型
+│   ├── logistic_regression_model.pkl
+│   ├── naive_bayes_model.pkl
+│   ├── random_forest_model.pkl
+│   └── svm_model.pkl
+└── prompt/                   # AI Agent 對話記錄
+```
 
-The project follows the Cross-Industry Standard Process for Data Mining (CRISP-DM) methodology.
+這是一個進階的垃圾郵件分類系統，不僅能分類訊息，還提供一個綜合平台來比較多種機器學習模型。它具有高度互動性的 Streamlit 網頁應用程式，可用於即時預測、批次分析、模型效能評估和探索性資料分析（EDA）。
 
-### 1. Business Understanding
+專案遵循 CRISP-DM（Cross-Industry Standard Process for Data Mining）方法論。
 
-**Objective:** To build a robust system to accurately classify messages as "spam" or "ham" and to evaluate and compare the performance of several different classification algorithms to identify the most effective models for this task.
+## CRISP-DM 流程說明
 
-**Success Criteria:**
-*   High accuracy across multiple models.
-*   An interactive and user-friendly web interface for analysis and prediction.
-*   Clear, side-by-side visualizations of model performance metrics.
+### 1. 商業理解 (Business Understanding)
 
-### 2. Data Understanding
+**目標：** 建立一個強大的系統，能夠準確地將訊息分類為「垃圾郵件（spam）」或「非垃圾郵件（ham）」，並評估和比較幾種不同分類演算法的效能，以找出最適合此任務的模型。
 
-**Dataset:** The project uses the `sms_spam_no_header.csv` dataset, a collection of SMS messages labeled as "ham" or "spam".
+**成功標準：**
+*   多種模型均有高準確率。
+*   一個互動式且使用者友善的網頁介面，用於分析和預測。
+*   清晰、並排的視覺化模型效能指標。
 
-**Key Features:**
-*   `label`: The target variable (ham/spam).
-*   `message`: The raw text content of the message.
+### 2. 資料理解 (Data Understanding)
 
-### 3. Data Preparation
+**資料集：** 本專案使用 `sms_spam_no_header.csv` 資料集，這是一個標記為「ham」或「spam」的簡訊集合。
 
-The raw text data undergoes several preprocessing steps:
-*   **Label Encoding:** The categorical labels "ham" and "spam" are converted to 0 and 1.
-*   **Text Vectorization:** Messages are transformed into numerical feature vectors using TF-IDF (Term Frequency-Inverse Document Frequency), which captures the importance of each word.
+**主要特徵：**
+*   `label`: 目標變數 (ham/spam)。
+*   `message`: 訊息的原始文字內容。
 
-### 4. Modeling
+### 3. 資料準備 (Data Preparation)
 
-To find the best approach for this classification problem, four different algorithms are trained and evaluated:
+原始文字資料經過幾個預處理步驟：
+*   **標籤編碼：** 將分類標籤「ham」和「spam」轉換為 0 和 1。
+*   **文字向量化：** 使用 TF-IDF（詞頻-逆文件頻率）將訊息轉換為數值特徵向量，以捕捉每個詞的重要性。
 
-*   **Logistic Regression:** A reliable linear model that serves as a strong baseline.
-*   **Naive Bayes (Multinomial):** A classic algorithm for text classification, known for its speed and efficiency.
-*   **Support Vector Machine (SVM):** A powerful model that works well in high-dimensional spaces like text data.
-*   **Random Forest:** An ensemble method that combines multiple decision trees to improve accuracy and control overfitting.
+### 4. 模型建立 (Modeling)
 
-All trained models are saved and can be selected for live prediction in the Streamlit app.
+為了找到此分類問題的最佳方法，我們訓練並評估了四種不同的演算法：
 
-### 5. Evaluation
+*   **邏輯迴歸 (Logistic Regression):** 一個可靠的線性模型，可作為強大的基準。
+*   **樸素貝氏 (Naive Bayes - Multinomial):** 用於文字分類的經典演算法，以其速度和效率著稱。
+*   **支持向量機 (Support Vector Machine - SVM):** 一個強大的模型，在像文字資料這樣的高維空間中表現良好。
+*   **隨機森林 (Random Forest):** 一種集成方法，結合多個決策樹以提高準確性並控制過擬合。
 
-The models are rigorously evaluated on a held-out test set. The Streamlit application features a dedicated **"Model Comparison"** page that displays key performance metrics for each model, including:
+所有訓練好的模型都會被儲存，並可在 Streamlit 應用程式中選擇進行即時預測。
 
-*   **Accuracy, Precision, Recall, and F1-Score.**
-*   **Prediction Time.**
-*   A bar chart for quick visual comparison of F1-scores.
+### 5. 模型評估 (Evaluation)
 
-### 6. Deployment
+模型在保留的測試集上進行嚴格評估。Streamlit 應用程式設有專門的「模型比較」頁面，顯示每個模型的主要效能指標，包括：
 
-The project is deployed as an interactive Streamlit web application with the following key features:
+*   **準確率、精確率、召回率和 F1-Score。**
+*   **預測時間。**
+*   **F1-Score 的長條圖**，以便快速視覺比較。
+*   **ROC 曲線和 Precision-Recall 曲線**
+*   **閾值掃描表記錄**
 
-*   **Live Prediction:** Select any of the trained models and input custom text to get an instant classification and the associated spam probability.
-*   **Batch Prediction:** Upload a CSV file with messages to get predictions for the entire file, which can then be downloaded.
-*   **Model Comparison:** A dashboard to compare the performance metrics of all trained models side-by-side.
-*   **Exploratory Data Analysis (EDA):** An interactive page to explore the dataset, featuring:
-    *   Class distribution pie chart.
-    *   Message length distribution histograms.
-    *   Word clouds for both spam and ham messages to visualize the most frequent terms.
+### 6. 部署 (Deployment)
 
-## How to Run the Project
+該專案部署為一個互動式的 Streamlit 網頁應用程式，具有以下主要功能：
 
-1.  **Set up Environment:**
-    It is recommended to use a virtual environment.
-    ```bash
-    python3 -m venv venv
-    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
-    ```
+*   **即時預測：** 選擇任何一個訓練好的模型，並輸入自訂文字，以獲得即時分類和相關的垃圾郵件機率。
+*   **批次預測：** 上傳一個包含訊息的 CSV 檔案，以對整個檔案進行預測，然後可以下載結果。
+*   **模型比較：** 一個儀表板，用於並排比較所有訓練模型的效能指標。
+*   **探索性資料分析 (EDA):** 一個互動頁面，用於探索資料集，包括：
+    *   類別分佈的長條圖和圓餅圖。
+    *   訊息長度分佈的密度圖。
+    *   垃圾郵件和非垃圾郵件的文字雲，以視覺化最頻繁的詞彙。
+    *   訊息長度的統計分析表。
 
-2.  **Install Dependencies:**
+## 如何部署到 Streamlit Cloud
+
+1. 將專案資料夾推送到遠端 GitHub。
+2. 前往 https://share.streamlit.io ，點擊 “Create app”。
+3. 選擇您的 GitHub Repository 和 5114050013_hw3.py  作為主檔案。
+4. 部署應用程式。
+
+## 如何執行專案
+
+1.  **安裝依賴函式庫**
     ```bash
     pip install -r requirements.txt
     ```
 
-3.  **Train Models:**
-    Run the training script. This will train all four models and save them in the `models/` directory.
+2.  **訓練模型**
+    執行訓練腳本。這將訓練所有四個模型，並將它們保存在 `models/` 目錄中。
     ```bash
     python 5114050013_hw3.py
     ```
 
-4.  **Run Streamlit App:**
-    Launch the web application.
+3.  **啟動 Streamlit 應用程式**
+    啟動網頁應用程式。
     ```bash
     streamlit run streamlit_app.py
     ```
 
-## Datasets Reference
+## 資料集參考
 https://github.com/PacktPublishing/Hands-On-Artificial-Intelligence-for-Cybersecurity/blob/master/Chapter03/datasets/sms_spam_no_header.csv
