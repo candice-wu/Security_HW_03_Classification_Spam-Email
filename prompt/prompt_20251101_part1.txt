@@ -273,3 +273,61 @@ User: README.md 第249列的 2. 至 https://share.streamlit.io，點擊 “Creat
   ，點擊 “Create app”
 
 ✦ I have corrected the typo in README.md by adding a space before the comma in the Streamlit deployment instructions.
+
+User: 請再幫忙將所有異動的檔案 push to remote github repository
+
+Gemini: ✦ All changes have been pushed to the remote GitHub repository.
+
+User: 上傳到 remote github，部署到 Streamlit Cloud 
+  （https://hw03-classification-spam-email.streamlit.app），模型比較頁面有以下報錯：
+
+  ValueError: This app has encountered an error. The original error message is redacted to prevent data leaks. Full 
+  error details have been recorded in the logs (if you're on Streamlit Cloud, click on 'Manage app' in the lower right
+   of your app).
+  Traceback:
+  File "/mount/src/security_hw_03_classification_spam-email/5114050013_hw3.py", line 254, in <module>
+      perf_df, y_test_split, X_test_tfidf_split = get_performance_metrics(test_size_ratio)
+                                                  ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/caching/cache_utils.py", line 228, in 
+  __call__
+      return self._get_or_create_cached_value(args, kwargs, spinner_message)
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/caching/cache_utils.py", line 270, in 
+  _get_or_create_cached_value
+      return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/caching/cache_utils.py", line 329, in 
+  _handle_cache_miss
+      computed_value = self._info.func(*func_args, **func_kwargs)
+  File "/mount/src/security_hw_03_classification_spam-email/5114050013_hw3.py", line 240, in get_performance_metrics
+      y_pred = model.predict(X_test_tfidf)
+  File "/home/adminuser/venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py", line 375, in predict
+      scores = self.decision_function(X)
+  File "/home/adminuser/venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py", line 352, in 
+  decision_function
+      X = validate_data(self, X, accept_sparse="csr", reset=False)
+  File "/home/adminuser/venv/lib/python3.13/site-packages/sklearn/utils/validation.py", line 2975, in validate_data
+      _check_n_features(_estimator, X, reset=reset)
+      ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/adminuser/venv/lib/python3.13/site-packages/sklearn/utils/validation.py", line 2839, in 
+  _check_n_features
+      raise ValueError(
+      ...<2 lines>...
+      )
+
+Gemini: ✦ I have corrected the get_top_tokens function in 5114050013_hw3.py to use the pre-fitted vectorizer correctly.
+
+  To resolve the ValueError on Streamlit Cloud, please follow these steps:
+
+   1. Re-run the training script locally:
+   1     python train_model.py
+      This will ensure that your models are trained and saved with the correct feature dimensions from the
+  TfidfVectorizer.
+
+   2. Clear the cache and redeploy your Streamlit app on Streamlit Cloud:
+       * Go to your app on Streamlit Cloud.
+       * Click on "Manage app" (usually in the lower right corner).
+       * Look for an option to "Clear cache" or "Hard reboot" the app. This will force Streamlit to reload all
+         components, including the updated models and vectorizer.
+
+  After these steps, the feature mismatch error should be resolved.

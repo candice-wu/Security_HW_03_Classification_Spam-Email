@@ -367,7 +367,7 @@ elif selected == "探索性資料分析":
 
     @st.cache_data
     def get_top_tokens(corpus, n=10):
-        vec = vectorizer.fit_transform(corpus)
+        vec = vectorizer.transform(corpus)
         sum_words = vec.sum(axis=0)
         words_freq = [(word, sum_words[0, idx]) for word, idx in vectorizer.vocabulary_.items()]
         words_freq = sorted(words_freq, key=lambda x: x[1], reverse=True)
