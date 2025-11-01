@@ -1,4 +1,5 @@
 Streamlit Demo-site：https://hw03-classification-spam-email.streamlit.app
+
 [補充]
 1. 與 ChatGPT 對話記錄請參閱「人工智慧與資訊安全_HW03_與 chatGPT 對話記錄.pdf」
 2. 與 AI Agent (Gemini CLI and openspec) 對話記錄請參閱 prompt 資料夾裡的 7 份 .txt files.
@@ -95,10 +96,14 @@ Streamlit Demo-site：https://hw03-classification-spam-email.streamlit.app
 
 ## 如何部署到 Streamlit Cloud
 
-1. 將專案資料夾推送到遠端 GitHub。
-2. 前往 https://share.streamlit.io ，點擊 “Create app”。
-3. 選擇您的 GitHub Repository 和 5114050013_hw3.py  作為主檔案。
-4. 部署應用程式。
+1. Push 專案資料夾 to GitHub
+2. 至 https://share.streamlit.io，點擊 “Create app”
+3. Repository：下拉選擇 candice-wu/Security_HW_03_Classification_Spam-Email
+4. Branch：Main
+5. Main file path：5114050013_hw3.py
+6. App URL (optional)：預設可以維持，或改掉並另外命名
+，如：hw03-classification-spam-email
+7. 點擊 “Deploy” 即完成部署
 
 ## 如何執行專案
 
@@ -110,13 +115,13 @@ Streamlit Demo-site：https://hw03-classification-spam-email.streamlit.app
 2.  **訓練模型**
     執行訓練腳本。這將訓練所有四個模型，並將它們保存在 `models/` 目錄中。
     ```bash
-    python 5114050013_hw3.py
+    python train_model.py
     ```
 
 3.  **啟動 Streamlit 應用程式**
     啟動網頁應用程式。
     ```bash
-    streamlit run streamlit_app.py
+    streamlit run 5114050013_hw3.py
     ```
 
 ## 資料集參考

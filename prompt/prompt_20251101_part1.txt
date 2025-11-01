@@ -235,3 +235,32 @@ User: 請在 prompt folder 裡幫我新增一個 prompt_20251101_part1.txt
 
 Gemini: ✦ I have created the file prompt/prompt_20251101_part1.txt as requested.
 
+因為新增一個 prompt folder 並把7份對話記錄移進此資料夾，請幫我將之前 local and remote GitHub repository 
+  上面的7份對話記錄作刪除（如：prompt_20251024.txt）
+
+  接著，把所有新增的、更新的檔案全部 push to remote GitHub
+
+Gemini: All changes, including file renames, documentation updates, and code modifications, have been committed and pushed
+  to the remote GitHub repository.
+
+User: README.md 的 ## 如何部署到 Streamlit Cloud 底下的4點，請全數刪除並改成如下說明：
+
+  1. Push 專案資料夾 to GitHub
+  2. 至 https://share.streamlit.io，點擊 “Create app”
+  3. Repository：下拉選擇 candice-wu/Security_HW_03_Classification_Spam-Email
+  4. Branch：Main
+  5. Main file path：5114050013_hw3.py
+  6. App URL (optional)：預設可以維持，或改掉並另外命名 ，如：hw03-classification-spam-email
+  7. 點擊 “Deploy” 即完成部署
+
+Gemini: ✦ I have updated the "如何部署到 Streamlit Cloud" section in README.md with the new, more detailed instructions.
+
+User: README.md 上方的 [補充]，請換行到下一列，不要緊胋https://hw03-classification-spam-email.streamlit.app 後方
+
+Gemini：I have added a newline after the Streamlit Demo-site URL in README.md as you requested.
+
+User： README.md 的 「## 如何執行專案」的第2點「python 5114050013_hw3.py」改成「python 
+  train_model.py」，與第3點「streamlit run streamlit_app.py」改成「streamlit run 5114050013_hw3.py」
+
+Gemini: ✦ I have updated the README.md file with the correct commands for running the training script and the Streamlit
+  application.
